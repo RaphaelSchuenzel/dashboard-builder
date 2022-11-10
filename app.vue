@@ -1,5 +1,5 @@
 <template lang="pug">
-#dashboard.font-sans
+#dashboard
     a Add Component
 
     #components
