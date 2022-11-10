@@ -1,8 +1,8 @@
 <template lang="pug">
-#dashboard
+#dashboard.container.mx-auto
     a Add Component
 
-    #components
+    #components.grid.grid-cols-4
         Component(
             v-for="component in components"
             :data="component"
@@ -15,8 +15,12 @@ const components = [
         chart: 'line'
     }
 ]
+
 const availableComponents = [
-    'Line Chart'
+    {
+        name: 'line',
+        label: 'Line Chart'
+    }
 ]
 </script>
 
