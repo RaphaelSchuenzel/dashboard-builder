@@ -10,30 +10,40 @@
         #components.grid.grid-cols-4
             Component(
                 v-for="component in components"
-                :data="component"
+                :component="component"
             )
 </template>
 
 <script setup>
 const components = [
     {
-        chart: 'line'
+        name: 'Monthly Profit',
+        chart: 'line',
+        data: [{x: 10, y: 20}, {x: 15, y: null}, {x: 20, y: 10}],
     },
     {
-        chart: 'bar'
+        name: 'Average Price',
+        chart: 'bar',
+        data: [{x: 10, y: 20}, {x: 15, y: null}, {x: 20, y: 10}],
     },
     {
-        chart: 'line'
+        name: 'Sales per Month',
+        chart: 'line',
+        data: [{x: 10, y: 20}, {x: 15, y: null}, {x: 20, y: 10}],
     },
     {
-        chart: 'pie'
+        name: 'Monthly Revenue',
+        chart: 'pie',
+        data: [{x: 10, y: 20}, {x: 15, y: null}, {x: 20, y: 10}],
     },
     {
-        chart: 'bar'
+        name: 'Example',
+        chart: 'bar',
+        data: [{x: 10, y: 20}, {x: 15, y: null}, {x: 20, y: 10}],
     }
 ]
 
-const availableComponents = [
+const availableCharts = [
     {
         name: 'line',
         label: 'Line Chart'
