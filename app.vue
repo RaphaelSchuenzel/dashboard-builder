@@ -14,30 +14,45 @@
             )
 </template>
 
-<script setup>
-const components = [
-    {
-        name: 'Orders per Year',
-        chart: 'bar',
-        data: {
-            labels: ['2020', '2021'],
-            datasets: [
-                {
-                    label: 'Orders',
-                    data: [4000, 2000]
-                }
-            ],
-        },
-    },
-]
+<script lang="ts">
+const getDataSet = () => import('~/static/data/us-sales.json').then(m => m.default || m)
 
-const availableCharts = [
-    {
-        name: 'line',
-        label: 'Line Chart'
+export default defineNuxtComponent({
+    async asyncData() {
+        const dataSet = await getDataSet()
+
+        return { dataSet }
+    },
+    data () {
+        return {
+            components: [
+                {
+                    name: 'Orders per Year',
+                    chart: 'bar',
+                    data: {
+                        labels: ['2020', '2021'],
+                        datasets: [
+                            {
+                                label: 'Orders',
+                                data: [4000, 2000]
+                            }
+                        ],
+                    },
+                },
+            ],
+
+            // component builder
+            availableCharts: [
+                {
+                    name: 'line',
+                    label: 'Line Chart'
+                }
+            ]
+        }
     }
-]
+})
 </script>
+
 
 
 <style lang="sass">

@@ -58,9 +58,7 @@ export default defineComponent({
         }
     },
     setup(props) {
-        console.log(props)
-
-        const chartData = {
+        /* const chartData = {
             labels: [
                 "January",
                 "February",
@@ -82,7 +80,7 @@ export default defineComponent({
                     data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11],
                 },
             ],
-        };
+        }; */
 
         const chartOptions = {
             responsive: true,
