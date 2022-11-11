@@ -26,6 +26,7 @@ export default defineNuxtComponent({
     data () {
         return {
             components: [
+                // [bar] Total orders per year (sum(orders):year)
                 {
                     name: 'Orders per Year',
                     chart: 'bar',
@@ -39,9 +40,17 @@ export default defineNuxtComponent({
                         ],
                     },
                 },
+
+                // [bar] Revenue per year (sum(order.price):year)
+
+                // [pie] Orders by payment method (orders:payment_method)
+
+                // [bar] Orders by region (orders:region)
+
+                // [pie] Average order discount (orders:discount)
             ],
 
-            // component builder
+            // component builder chart options
             availableCharts: [
                 {
                     name: 'line',
@@ -49,7 +58,12 @@ export default defineNuxtComponent({
                 }
             ]
         }
-    }
+    },
+    methods: {
+        getComponentData(dataSet: Object, dimension: String, measure: String) {
+            // todo: group dataset by dimension
+        }
+    },
 })
 </script>
 
