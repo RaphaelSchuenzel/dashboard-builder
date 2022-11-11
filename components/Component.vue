@@ -4,10 +4,12 @@
 
     BarChart(
         v-if="$attrs.component.chart === 'bar'"
+        :data="$attrs.component.data"
     )
 
     PieChart(
-        v-if="$attrs.component.chart === 'pie'"
+        v-else-if="$attrs.component.chart === 'pie'"
+        :data="$attrs.component.data"
     )
 </template>
 

@@ -23,37 +23,43 @@ ChartJS.register(
 );
 
 export default defineComponent({
-      name: "BarChart",
-      components: {
-          Bar,
-      },
-      props: {
-          chartId: {
-              type: String,
-              default: "bar-chart",
-          },
-          width: {
-              type: Number,
-              default: 400,
-          },
-          height: {
-              type: Number,
-              default: 400,
-          },
-          cssClasses: {
-              default: "",
-              type: String,
-          },
-          styles: {
-              type: Object as PropType<Partial<CSSStyleDeclaration>>,
-              default: () => {},
-          },
-          plugins: {
-              type: Array as PropType<Plugin<"bar">[]>,
-              default: () => [],
-          },
+    name: "BarChart",
+    components: {
+        Bar,
+    },
+    props: {
+        chartId: {
+            type: String,
+            default: "bar-chart",
+        },
+        width: {
+            type: Number,
+            default: 400,
+        },
+        height: {
+            type: Number,
+            default: 400,
+        },
+        cssClasses: {
+            default: "",
+            type: String,
+        },
+        styles: {
+            type: Object as PropType<Partial<CSSStyleDeclaration>>,
+            default: () => {},
+        },
+        plugins: {
+            type: Array as PropType<Plugin<"bar">[]>,
+            default: () => [],
+        },
+        data: {
+            type: Object,
+            default: {}
+        }
     },
     setup(props) {
+        console.log(props)
+
         const chartData = {
             labels: [
                 "January",
@@ -85,7 +91,7 @@ export default defineComponent({
 
         return () =>
             h(Bar, {
-                chartData,
+                chartData: props.data,
                 chartOptions,
                 chartId: props.chartId,
                 width: props.width,

@@ -17,30 +17,18 @@
 <script setup>
 const components = [
     {
-        name: 'Monthly Profit',
+        name: 'Orders per Year',
         chart: 'bar',
-        data: [{x: 10, y: 20}, {x: 15, y: null}, {x: 20, y: 10}],
+        data: {
+            labels: ['2020', '2021'],
+            datasets: [
+                {
+                    label: 'Orders',
+                    data: [4000, 2000]
+                }
+            ],
+        },
     },
-    {
-        name: 'Average Price',
-        chart: 'pie',
-        data: [{x: 10, y: 20}, {x: 15, y: null}, {x: 20, y: 10}],
-    },
-    {
-        name: 'Sales per Month',
-        chart: 'bar',
-        data: [{x: 10, y: 20}, {x: 15, y: null}, {x: 20, y: 10}],
-    },
-    {
-        name: 'Monthly Revenue',
-        chart: 'pie',
-        data: [{x: 10, y: 20}, {x: 15, y: null}, {x: 20, y: 10}],
-    },
-    {
-        name: 'Example',
-        chart: 'bar',
-        data: [{x: 10, y: 20}, {x: 15, y: null}, {x: 20, y: 10}],
-    }
 ]
 
 const availableCharts = [
