@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.1.3",
+    "@types/lodash": "^4.14.188",
     "nuxt": "3.0.0-rc.13",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",

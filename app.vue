@@ -1,10 +1,10 @@
 <template lang="pug">
-#dashboard.bg-gray-200
+#dashboard.bg-gray-200.min-h-screen
     .bg-gray-50
         .flex.items-center.justify-between.mx-6.px-6.py-4
             p ACME
 
-            a.border-2.p-4 Add Component
+            a.border-2.p-4.opacity-20 Add Component
 
     .mx-6.py-8
         #components.grid.grid-cols-4
@@ -15,6 +15,8 @@
 </template>
 
 <script lang="ts">
+import _ from 'lodash'
+
 const getDataSet = () => import('~/static/data/us-sales.json').then(m => m.default || m)
 
 export default defineNuxtComponent({
@@ -30,45 +32,54 @@ export default defineNuxtComponent({
                 {
                     name: 'Orders per Year',
                     chart: 'bar',
-                    data: {
-                        labels: ['2020', '2021'],
-                        datasets: [
-                            {
-                                label: 'Orders',
-                                data: [4000, 2000]
-                            }
-                        ],
-                    },
+                    data: this.getChartData(this.dataSet, 'year', 'Orders')
                 },
 
-                // [bar] Revenue per year (sum(order.price):year)
+                // todo: [bar] Revenue per year (sum(order.price):year)
 
-                // [pie] Orders by payment method (orders:payment_method)
+                // todo: [pie] Orders by payment method (orders:payment_method)
 
-                // [bar] Orders by region (orders:region)
+                // todo: [bar] Orders by region (orders:region)
 
-                // [pie] Average order discount (orders:discount)
+                // todo: [pie] Average order discount (orders:discount)
             ],
 
-            // component builder chart options
-            availableCharts: [
+            // todo: component builder chart options
+            /* availableCharts: [
                 {
                     name: 'line',
                     label: 'Line Chart'
                 }
-            ]
+            ] */
         }
     },
     methods: {
-        getComponentData(dataSet: Object, dimension: String, measure: String) {
-            // todo: group dataset by dimension
-        }
+        getChartData(arr: Array<Object>, key: String, label: String) {
+            const groupedArr = _(arr)
+                .groupBy(key)
+                .value()
+
+            const labels = Object.keys(groupedArr)
+            const data = []
+
+            Object.keys(groupedArr).forEach(key => {
+                data.push(groupedArr[key].length)
+            })
+
+            const datasets = [
+                {
+                    label,
+                    data
+                }
+            ]
+
+            return {
+                labels,
+                datasets
+            }
+        },
     },
 })
 </script>
 
-
-
-<style lang="sass">
-
-</style>
+<style lang="sass"></style>
